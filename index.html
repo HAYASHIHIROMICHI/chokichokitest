@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="jp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <title>demo_ja.mp4 (Vrew 0.10.6)</title>
+
+    <link rel="stylesheet" media="all" href="./css/reset.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="./js/top.js"></script>
+
+    <!-- <link href="/try/favicon.ico?v=20201230" rel="shortcut icon" /> -->
+    <script
+      async=""
+      src="https://www.google-analytics.com/analytics.js"
+    ></script>
+    <!-- <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Object.values"></script> -->
+    <!-- <link href="/try/static/css/2.e1ec0597.chunk.css" rel="stylesheet" /> -->
+    <!-- <link href="/try/static/css/main.3c969538.chunk.css" rel="stylesheet" /> -->
+    <!-- <link href="https://cdn.polyfill.io" rel="preconnect" /> -->
+    <!-- <link
+      href="./css/style.css"
+      name="description"
+      content="ショートムービーを自動でカット"
+    /> -->
+
+    <link
+      rel="stylesheet"
+      media="all"
+      href="./css/style.css"
+      content="ショートムービーを自動でカット"
+    />
+    <meta property="og:title" content="ショートムービーを自動でカット" />
+    <meta property="og:description" content="ショートムービーを自動でカット" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <header id="header">
+      <div class="header-container">
+        <div class="header-wrapper row header-pc">
+          <div class="header-left col-md-4">
+            <div class="header-logo">ChokiChoki</div>
+          </div>
+          <div class="header-right col-md-8">
+            <div class="header-nav-items">
+              <div class="header-nav-item">
+                <a href="./index.html"> HOME </a>
+              </div>
+              <div class="header-nav-item">
+                <a href="./index.html" class=""> CONTACT </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-sp"></div>
+    </header>
+    <main>
+      <div id="result"></div>
+      <!-- buttonを入れる -->
+    </main>
+    <footer id="footer">
+      <nav class="footer-company-menu">
+        <div class="footer-container">
+          <div class="footer-wrapper">
+            <ul class="service-menu-lists">
+              <li class="service-menu-list">
+                <a href="/" target="_blank">運営会社</a>
+              </li>
+              <li class="service-menu-list">
+                <a href="./index.html">お知らせ</a>
+              </li>
+            </ul>
+            <div>©2022 ChokiChoki Inc.</div>
+          </div>
+        </div>
+      </nav>
+    </footer>
+  </body>
+</html>
+<script>
+  $(function () {
+    /*
+    STEP1: TODO
+    1) 左側に動画を表示する
+    2) ボタンにチョキチョキされた動画のリンク(S3)を貼って飛ばす
+    3) 固定データを用意して、右側のインプットに初期表示させる
+    
+    STEP2: TODO
+    1) [STEP1-3]を変更する。JavaScript(jQuery)でDOMを生成して、固定データを用意して、右側のインプットに初期表示させる
+    
+    Before STEP3: TODO
+    Lambda, DynamoDBの準備
+
+    STEP3: TODO
+    1) [STEP2-1]を変更する。固定データではなく、DynamoDBから取得したデータを、右側のインプットに初期表示させる。METHOD: GET
+
+    STEP4: TODO
+    1) 初期表示させたデータを更新できるようにする。METHOD: PUT or PATCH
+
+    */
+    console.log("start: place=[top]");
+    let html = "";
+    let arr = [
+      { text: "テスト1" },
+      { text: "テスト2" },
+      { text: "テスト3" },
+      { text: "テスト4" },
+      { text: "テスト5" },
+    ];
+    $.each(arr, function (index, value) {
+      let inner_html = "";
+      inner_html += "<div class='row mt-3'>";
+      inner_html +=
+        "<div class='col-md-6'>" +
+        "<input type='text' value=" +
+        '"' +
+        `${value.text}` +
+        '"' +
+        "/>" +
+        "</div>";
+      inner_html +=
+        "<div class='col-md-6'>" +
+        "<input type='text' value=" +
+        '"' +
+        `` +
+        '"' +
+        "/>" +
+        "</div>";
+      inner_html += "</div>";
+      html += inner_html;
+    });
+    $("#result").append(html);
+    console.log("end: place=[top]");
+  });
+</script>
